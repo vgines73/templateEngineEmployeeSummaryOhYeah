@@ -29,7 +29,26 @@ const managerQuestions = [
         message: "What is the Manager's email?",
         name: "email"
     }
-]
+];
+
+const internQuestions = [
+    {
+        type: "input",
+        message: "What is your Intern's name?",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "What is your Intern's ID number?",
+        name: "ID"
+    },
+    {
+        type: "input",
+        message: "What is your Intern's email?",
+        name: "email"
+    }
+];
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!

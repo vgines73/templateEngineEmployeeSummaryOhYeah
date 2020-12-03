@@ -12,6 +12,10 @@ Employee.prototype.getName = function() {
     }
 }
 
+Employee.prototype.getRole = function() {
+    if 
+}
+
 //name, id, email, role
 
 //functions getName(), getId(), getEmail(), getRole()
