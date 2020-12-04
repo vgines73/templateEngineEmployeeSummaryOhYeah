@@ -13,15 +13,14 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const whichEmployee = [
-    {
-        type: "list",
-        message: "Which Employee would you like to enter?",
-        choices: [Manager, Intern, Engineer]
-    },
-]
-
-const managerQuestions = [
+// const whichEmployee = [
+//     {
+//         type: "list",
+//         message: "Which Employee would you like to enter information?",
+//         choices: ["Manager", "Intern", "Engineer"]
+//     }
+// ]
+const questions = [
     {
         type: "input",
         message: "What is the Manager's name?",
@@ -36,10 +35,12 @@ const managerQuestions = [
         type: "input",
         message: "What is the Manager's email?",
         name: "email"
-    }
-];
-
-const internQuestions = [
+    },
+    {
+        type: "input",
+        message: "What is the Manager's phone number?",
+        name: "officeNumber"
+    }, 
     {
         type: "input",
         message: "What is your Intern's name?",
@@ -54,10 +55,12 @@ const internQuestions = [
         type: "input",
         message: "What is your Intern's email?",
         name: "email"
-    }
-];
-
-const engineerQuestions = [
+    },
+    {
+        type: "input",
+        message: "What school did your Intern graduate from?",
+        name: "school"
+    },
     {
         type: "input",
         message: "What is your Engineer's name?",
@@ -72,13 +75,18 @@ const engineerQuestions = [
         type: "input",
         message: "What is your Engineer's email?",
         name: "email"
+    },
+    {
+        type: "input",
+        message: "What is your Engineer's Github username?",
+        name: "github"
     }
 ]
 
 function init() {
-    inquirer.prompt(whichEmployee, managerQuestions, internQuestions, engineerQuestions).then((data) => {
-        console.log(data)
-        fs.writeFile("main.html", render(managerQuestions, internQuestions, engineerQuestions), (err) => {
+    inquirer.prompt(questions).then((res) => {
+        console.log(res)
+        fs.writeFile("main.html", render(res), (err) => {
             if (err) throw err;
             console.log("complete")
         })
