@@ -70,6 +70,10 @@ const engineerQuestions = [
 function init() {
     inquirer.prompt(managerQuestions, internQuestions, engineerQuestions).then((data) => {
         console.log(data)
+        fs.writeFile("main.html", render(managerQuestions, internQuestions, engineerQuestions), (err) => {
+            if (err) throw err;
+            console.log("complete")
+        })
     })
 }
 init();
