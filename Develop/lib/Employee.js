@@ -6,15 +6,10 @@ function Employee(name, id, email) {
     this.email = email;
 }
 
-Employee.prototype.getName = function() {
-    if (this.name = name) {
-        return this.name;
-    }
-}
-
-Employee.prototype.getRole = function() {
-    if 
-}
+// Employee.prototype.getName();
+// Employee.getId();
+// Employee.getEmail();
+// Employee.getRole();
 
 //name, id, email, role
 
