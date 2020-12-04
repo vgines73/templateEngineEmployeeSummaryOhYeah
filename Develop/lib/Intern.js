@@ -2,21 +2,18 @@
 const Employee = require("./Employee");
 
 // const Intern = new Employee(name, id, email);
-function Intern(name, id, email, getSchool) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-    this.getSchool = getSchool;
+ class Intern {
+    constructor(name, id, email, school) {
+        super(name, id, email);
+        this.school = school;
+    };
+    getRole() {
+        return "Intern";
+    };
+    
+    getSchool() {
+        return "UCLA";
+    };
 };
-
-Intern.prototype.getRole = function() {
-    return "Intern";
-};
-Intern.prototype.getSchool = function() {
-    return "UCLA";
-};
-
-
-// //functions getRole(), getSchool()
 
 module.exports = Intern;
