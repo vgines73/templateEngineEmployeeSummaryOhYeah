@@ -2,21 +2,18 @@
 const Employee = require("./Employee");
 
 //const Engineer = new Employee(name, id, email);
-function Engineer(name, id, email, getGithub) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-    this.getGithub = getGithub;
+class Engineer{
+    constructor(name, id, email, getGithub) {
+        super(name, id, email);
+        this.getGithub = getGithub;
+    };
+    getRole() {
+        return "Engineer";
+    };
+    
+    getGithub() {
+        return "GitHubUser"
+    };
 };
-
-Engineer.prototype.getRole = function() {
-    return "Engineer";
-};
-
-Engineer.prototype.getGithub = function(){
-    return "GitHubUser"
-};
-
-//functions getRole(), getGithub(), 
 
 module.exports = Engineer;
