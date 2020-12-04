@@ -13,13 +13,7 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-// const whichEmployee = [
-//     {
-//         type: "list",
-//         message: "Which Employee would you like to enter information?",
-//         choices: ["Manager", "Intern", "Engineer"]
-//     }
-// ]
+
 const questions = [
     {
         type: "input",
@@ -29,7 +23,7 @@ const questions = [
     {
         type: "input",
         message: "What is the Manager's ID number?",
-        name: "ID"
+        name: "id"
     },
     {
         type: "input",
@@ -40,7 +34,13 @@ const questions = [
         type: "input",
         message: "What is the Manager's phone number?",
         name: "officeNumber"
-    }, 
+    },
+    {
+        type: "list",
+        message: "What is the employee's role?",
+        choices: ["Manager", "Intern", "Engineer"],
+        name: "role"
+    },
     {
         type: "input",
         message: "What is your Intern's name?",
@@ -49,7 +49,7 @@ const questions = [
     {
         type: "input",
         message: "What is your Intern's ID number?",
-        name: "ID"
+        name: "id"
     },
     {
         type: "input",
@@ -62,6 +62,12 @@ const questions = [
         name: "school"
     },
     {
+        type: "list",
+        message: "What is the employee's role?",
+        choices: ["Manager", "Intern", "Engineer"],
+        name: "role"
+    },
+    {
         type: "input",
         message: "What is your Engineer's name?",
         name: "name"
@@ -69,7 +75,7 @@ const questions = [
     {
         type: "input",
         message: "What is your Engineer's ID number?",
-        name: "ID"
+        name: "id"
     },
     {
         type: "input",
@@ -80,13 +86,19 @@ const questions = [
         type: "input",
         message: "What is your Engineer's Github username?",
         name: "github"
-    }
+    },
+    {
+        type: "list",
+        message: "What is the employee's role?",
+        choices: ["Manager", "Intern", "Engineer"],
+        name: "role"
+    },
 ]
 
 function init() {
     inquirer.prompt(questions).then((res) => {
         console.log(res)
-        fs.writeFile("main.html", render(res), (err) => {
+        fs.writeFile("team.html", render(res), outputPath, (err) => {
             if (err) throw err;
             console.log("complete")
         })
