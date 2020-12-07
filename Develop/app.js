@@ -46,7 +46,7 @@ function init() {
         console.log("res:", res)
         const manager = new Manager(res.name, res.id, res.email, res.officeNumber)
         console.log("New employee:", manager)
-        //render(manager)
+        // render(manager)
         internQuestions();
         // return manager
 
