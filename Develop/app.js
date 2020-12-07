@@ -22,6 +22,12 @@ function init() {
             name: "name"
         },
         {
+            type: "list",
+            message: "What is the employee's role?",
+            choices: ["Manager", "Intern", "Engineer"],
+            name: "role"
+        },
+        {
             type: "input",
             message: "What is the Manager's ID number?",
             name: "id"
@@ -37,72 +43,87 @@ function init() {
             name: "officeNumber"
         },
     ]).then((res) => {
-        console.log(res)
-        const manager = new Manager(res)
-        console.log(manager)
-        internQuestions();
+        console.log("res:", res)
+        const manager = new Manager(res.name, res.id, res.email, res.officeNumber)
+        console.log("New employee:", manager)
+        //render(manager)
+        // internQuestions();
         // return manager
 
     })
 }
-function internQuestions() {
-    inquirer.prompt([
-        {
-            type: "input",
-            message: "What is your Intern's name?",
-            name: "name"
-        },
-        {
-            type: "input",
-            message: "What is your Intern's ID number?",
-            name: "id"
-        },
-        {
-            type: "input",
-            message: "What is your Intern's email?",
-            name: "email"
-        },
-        {
-            type: "input",
-            message: "What school did your Intern graduate from?",
-            name: "school"
-        },
-    ]).then((res) => {
-        console.log(res)
-        const intern = new Intern(res)
-        console.log(intern)
-        engineerQuestions();
-    })
-}
+// function internQuestions() {
+//     inquirer.prompt([
+//         {
+//             type: "input",
+//             message: "What is your Intern's name?",
+//             name: "name"
+//         },
+//         {
+//             type: "list",
+//             message: "What is the employee's role?",
+//             choices: ["Manager", "Intern", "Engineer"],
+//             name: "role"
+//         },
+//         {
+//             type: "input",
+//             message: "What is your Intern's ID number?",
+//             name: "id"
+//         },
+//         {
+//             type: "input",
+//             message: "What is your Intern's email?",
+//             name: "email"
+//         },
+//         {
+//             type: "input",
+//             message: "What school did your Intern graduate from?",
+//             name: "school"
+//         },
+//     ]).then((res) => {
+//         console.log(res)
+//         const intern = new Intern(res)
+//         console.log(intern)
+        //render(intern)
+        // engineerQuestions();
+//     })
+// }
 
-function engineerQuestions() {
-    inquirer.prompt([
-        {
-            type: "input",
-            message: "What is your Engineer's name?",
-            name: "name"
-        },
-        {
-            type: "input",
-            message: "What is your Engineer's ID number?",
-            name: "id"
-        },
-        {
-            type: "input",
-            message: "What is your Engineer's email?",
-            name: "email"
-        },
-        {
-            type: "input",
-            message: "What is your Engineer's Github username?",
-            name: "github"
-        }
-    ]).then((res) => {
-        console.log(res)
-        const engineer = new Engineer(res);
-        console.log(engineer)
-    })
-}
+// function engineerQuestions() {
+//     inquirer.prompt([
+//         {
+//             type: "input",
+//             message: "What is your Engineer's name?",
+//             name: "name"
+//         },
+//         {
+//             type: "list",
+//             message: "What is the employee's role?",
+//             choices: ["Manager", "Intern", "Engineer"],
+//             name: "role"
+//         },
+//         {
+//             type: "input",
+//             message: "What is your Engineer's ID number?",
+//             name: "id"
+//         },
+//         {
+//             type: "input",
+//             message: "What is your Engineer's email?",
+//             name: "email"
+//         },
+//         {
+//             type: "input",
+//             message: "What is your Engineer's Github username?",
+//             name: "github"
+//         }
+//     ]).then((res) => {
+//         console.log(res)
+//         const engineer = new Engineer(res);
+//         console.log(engineer)
+//         //render(engineer)
+//     })
+// }
 // const questions = [
 //     {
 //         type: "input",
