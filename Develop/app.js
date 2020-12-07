@@ -14,96 +14,126 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-const questions = [
-    {
-        type: "input",
-        message: "What is the Manager's name?",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "What is the Manager's ID number?",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "What is the Manager's email?",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "What is the Manager's phone number?",
-        name: "officeNumber"
-    },
-    {
-        type: "list",
-        message: "What is the employee's role?",
-        choices: ["Manager", "Intern", "Engineer"],
-        name: "role"
-    },
-    {
-        type: "input",
-        message: "What is your Intern's name?",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "What is your Intern's ID number?",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "What is your Intern's email?",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "What school did your Intern graduate from?",
-        name: "school"
-    },
-    {
-        type: "list",
-        message: "What is the employee's role?",
-        choices: ["Manager", "Intern", "Engineer"],
-        name: "role"
-    },
-    {
-        type: "input",
-        message: "What is your Engineer's name?",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "What is your Engineer's ID number?",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "What is your Engineer's email?",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "What is your Engineer's Github username?",
-        name: "github"
-    },
-    {
-        type: "list",
-        message: "What is the employee's role?",
-        choices: ["Manager", "Intern", "Engineer"],
-        name: "role"
-    },
-]
-
 function init() {
-    inquirer.prompt(questions).then((res) => {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the Manager's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is the Manager's ID number?",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is the Manager's email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is the Manager's phone number?",
+            name: "officeNumber"
+        },
+    ]).then((res) => {
         console.log(res)
-        fs.writeFile("team.html", render(res), outputPath, (err) => {
-            if (err) throw err;
-            console.log("complete")
-        })
+        const manager = new Manager(res)
+        console.log(manager)
+       // return manager
+  
     })
 }
+// const questions = [
+//     {
+//         type: "input",
+//         message: "What is the Manager's name?",
+//         name: "name"
+//     },
+//     {
+//         type: "input",
+//         message: "What is the Manager's ID number?",
+//         name: "id"
+//     },
+//     {
+//         type: "input",
+//         message: "What is the Manager's email?",
+//         name: "email"
+//     },
+//     {
+//         type: "input",
+//         message: "What is the Manager's phone number?",
+//         name: "officeNumber"
+//     },
+//     {
+//         type: "list",
+//         message: "What is the employee's role?",
+//         choices: ["Manager", "Intern", "Engineer"],
+//         name: "role"
+//     },
+//     {
+//         type: "input",
+//         message: "What is your Intern's name?",
+//         name: "name"
+//     },
+//     {
+//         type: "input",
+//         message: "What is your Intern's ID number?",
+//         name: "id"
+//     },
+//     {
+//         type: "input",
+//         message: "What is your Intern's email?",
+//         name: "email"
+//     },
+//     {
+//         type: "input",
+//         message: "What school did your Intern graduate from?",
+//         name: "school"
+//     },
+//     {
+//         type: "list",
+//         message: "What is the employee's role?",
+//         choices: ["Manager", "Intern", "Engineer"],
+//         name: "role"
+//     },
+//     {
+//         type: "input",
+//         message: "What is your Engineer's name?",
+//         name: "name"
+//     },
+//     {
+//         type: "input",
+//         message: "What is your Engineer's ID number?",
+//         name: "id"
+//     },
+//     {
+//         type: "input",
+//         message: "What is your Engineer's email?",
+//         name: "email"
+//     },
+//     {
+//         type: "input",
+//         message: "What is your Engineer's Github username?",
+//         name: "github"
+//     },
+//     {
+//         type: "list",
+//         message: "What is the employee's role?",
+//         choices: ["Manager", "Intern", "Engineer"],
+//         name: "role"
+//     },
+// ]
+
+// function init() {
+//     inquirer.prompt(questions).then((res) => {
+//         console.log(res)
+//         fs.writeFile("team.html", outputPath, render(res), (err) => {
+//             if (err) throw err;
+//             console.log("complete")
+//         })
+//     })
+// }
 init();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
