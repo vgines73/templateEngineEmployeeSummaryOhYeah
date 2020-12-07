@@ -9,11 +9,14 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-
+const manager = [];
+const intern = [];
+const engineer = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+// to start asking the user questions for each employee
 function init() {
     inquirer.prompt([
         {
@@ -52,6 +55,8 @@ function init() {
 
     })
 }
+
+// function for intern
 function internQuestions() {
     inquirer.prompt([
         {
@@ -89,6 +94,7 @@ function internQuestions() {
     })
 }
 
+// function for engineer
 function engineerQuestions() {
     inquirer.prompt([
         {
@@ -126,8 +132,9 @@ function engineerQuestions() {
     })
 }
 
+//function to generate page
 function loadPage() {
-    fs.writeFile(outputPath, render(Manager, Intern, Engineer), (err) => {
+    fs.writeFile(outputPath, render(manager, intern, engineer), (err) => {
         if (err) throw err;
         console.log("complete")
     })
