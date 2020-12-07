@@ -47,47 +47,47 @@ function init() {
         const manager = new Manager(res.name, res.id, res.email, res.officeNumber)
         console.log("New employee:", manager)
         //render(manager)
-        // internQuestions();
+        internQuestions();
         // return manager
 
     })
 }
-// function internQuestions() {
-//     inquirer.prompt([
-//         {
-//             type: "input",
-//             message: "What is your Intern's name?",
-//             name: "name"
-//         },
-//         {
-//             type: "list",
-//             message: "What is the employee's role?",
-//             choices: ["Manager", "Intern", "Engineer"],
-//             name: "role"
-//         },
-//         {
-//             type: "input",
-//             message: "What is your Intern's ID number?",
-//             name: "id"
-//         },
-//         {
-//             type: "input",
-//             message: "What is your Intern's email?",
-//             name: "email"
-//         },
-//         {
-//             type: "input",
-//             message: "What school did your Intern graduate from?",
-//             name: "school"
-//         },
-//     ]).then((res) => {
-//         console.log(res)
-//         const intern = new Intern(res)
-//         console.log(intern)
+function internQuestions() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is your Intern's name?",
+            name: "name"
+        },
+        {
+            type: "list",
+            message: "What is the employee's role?",
+            choices: ["Manager", "Intern", "Engineer"],
+            name: "role"
+        },
+        {
+            type: "input",
+            message: "What is your Intern's ID number?",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is your Intern's email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What school did your Intern graduate from?",
+            name: "school"
+        },
+    ]).then((res) => {
+        console.log(res)
+        const intern = new Intern(res.name, res.id, res.email, res.school)
+        console.log(intern)
         //render(intern)
-        // engineerQuestions();
-//     })
-// }
+        //engineerQuestions();
+    })
+}
 
 // function engineerQuestions() {
 //     inquirer.prompt([
