@@ -121,99 +121,18 @@ function engineerQuestions() {
         console.log(res)
         const engineer = new Engineer(res.name, res.id, res.email, res.github);
         console.log(engineer)
+        loadPage();
         //render(engineer)
     })
 }
-// const questions = [
-//     {
-//         type: "input",
-//         message: "What is the Manager's name?",
-//         name: "name"
-//     },
-//     {
-//         type: "input",
-//         message: "What is the Manager's ID number?",
-//         name: "id"
-//     },
-//     {
-//         type: "input",
-//         message: "What is the Manager's email?",
-//         name: "email"
-//     },
-//     {
-//         type: "input",
-//         message: "What is the Manager's phone number?",
-//         name: "officeNumber"
-//     },
-//     {
-//         type: "list",
-//         message: "What is the employee's role?",
-//         choices: ["Manager", "Intern", "Engineer"],
-//         name: "role"
-//     },
-//     {
-//         type: "input",
-//         message: "What is your Intern's name?",
-//         name: "name"
-//     },
-//     {
-//         type: "input",
-//         message: "What is your Intern's ID number?",
-//         name: "id"
-//     },
-//     {
-//         type: "input",
-//         message: "What is your Intern's email?",
-//         name: "email"
-//     },
-//     {
-//         type: "input",
-//         message: "What school did your Intern graduate from?",
-//         name: "school"
-//     },
-//     {
-//         type: "list",
-//         message: "What is the employee's role?",
-//         choices: ["Manager", "Intern", "Engineer"],
-//         name: "role"
-//     },
-//     {
-//         type: "input",
-//         message: "What is your Engineer's name?",
-//         name: "name"
-//     },
-//     {
-//         type: "input",
-//         message: "What is your Engineer's ID number?",
-//         name: "id"
-//     },
-//     {
-//         type: "input",
-//         message: "What is your Engineer's email?",
-//         name: "email"
-//     },
-//     {
-//         type: "input",
-//         message: "What is your Engineer's Github username?",
-//         name: "github"
-//     },
-//     {
-//         type: "list",
-//         message: "What is the employee's role?",
-//         choices: ["Manager", "Intern", "Engineer"],
-//         name: "role"
-//     },
-// ]
 
-// function init() {
-//     inquirer.prompt(questions).then((res) => {
-//         console.log(res)
-//         fs.writeFile("team.html", outputPath, render(res), (err) => {
-//             if (err) throw err;
-//             console.log("complete")
-//         })
-//     })
-// }
+function loadPage() {
+    fs.writeFile(outputPath, render(Manager, Intern, Engineer), (err) => {
+        if (err) throw err;
+        console.log("complete")
+    })
+
+}
 init();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
