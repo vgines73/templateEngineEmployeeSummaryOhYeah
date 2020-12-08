@@ -10,9 +10,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const allEmployees = [];
-// const manager = [];
-// const intern = [];
-// const engineer = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -52,8 +49,6 @@ function init() {
         console.log("New employee:", manager)
         allEmployees.push(manager)
         internQuestions();
-        // return manager
-
     })
 }
 
@@ -135,7 +130,7 @@ function engineerQuestions() {
 
 //function to generate page
 function loadPage() {
-    fs.writeFile(outputPath, "main.html", "manager.html", "intern.html", "engineer.html", render(allEmployees), (err) => {
+    fs.writeFile(outputPath, "main.html", render(allEmployees), (err) => {
         if (err) throw err;
         console.log("complete")
     })
