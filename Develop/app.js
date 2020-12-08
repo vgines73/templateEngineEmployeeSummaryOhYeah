@@ -9,9 +9,10 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-const manager = [];
-const intern = [];
-const engineer = [];
+const allEmployees = [];
+// const manager = [];
+// const intern = [];
+// const engineer = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -49,7 +50,7 @@ function init() {
         console.log("res:", res)
         const manager = new Manager(res.name, res.id, res.email, res.officeNumber)
         console.log("New employee:", manager)
-        // render(manager)
+        allEmployees.push(manager)
         internQuestions();
         // return manager
 
@@ -89,7 +90,7 @@ function internQuestions() {
         console.log(res)
         const intern = new Intern(res.name, res.id, res.email, res.school)
         console.log(intern)
-        //render(intern)
+        allEmployees.push(intern)
         engineerQuestions();
     })
 }
@@ -127,14 +128,14 @@ function engineerQuestions() {
         console.log(res)
         const engineer = new Engineer(res.name, res.id, res.email, res.github);
         console.log(engineer)
+        allEmployees.push(engineer)
         loadPage();
-        //render(engineer)
     })
 }
 
 //function to generate page
 function loadPage() {
-    fs.writeFile(outputPath, render(manager, intern, engineer), (err) => {
+    fs.writeFile(outputPath, "main.html", "manager.html", "intern.html", "engineer.html", render(allEmployees), (err) => {
         if (err) throw err;
         console.log("complete")
     })
