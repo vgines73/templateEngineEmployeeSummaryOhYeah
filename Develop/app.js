@@ -42,7 +42,7 @@ function init() {
             name: "officeNumber"
         },
     ]).then((res) => {
-        console.log("res:", res);
+        //console.log("res:", res);
         const manager = new Manager(res.name, res.id, res.email, res.officeNumber);
         console.log("New employee:", manager);
         allEmployees.push(manager);
@@ -80,7 +80,7 @@ function internQuestions() {
             name: "school"
         },
     ]).then((res) => {
-        console.log(res);
+        //console.log(res);
         const intern = new Intern(res.name, res.id, res.email, res.school);
         console.log(intern);
         allEmployees.push(intern);
@@ -118,21 +118,39 @@ function engineerQuestions() {
             name: "github"
         }
     ]).then((res) => {
-        console.log(res);
+        //console.log(res);
         const engineer = new Engineer(res.name, res.id, res.email, res.github);
         console.log(engineer);
         allEmployees.push(engineer);
-        loadPage();
+        addEmployee();
     });
 };
 
+// function to add another employee
+function addEmployee() {
+    inquirer.prompt ([
+        {
+            type: "confirm",
+            message: "Would you like to add another employee?",
+            name: "confirmEmployee",
+            default: true
+        }
+    ]).then((res) => {
+        console.log(res)
+
+        if (res.confirmEmployee === true) {
+            init();
+        } else {
+            loadPage();
+        }
+    })
+}
 //function to generate page
 function loadPage() {
-    fs.writeFile( outputPath, render(allEmployees), (err) => {
+    fs.writeFile(outputPath, render(allEmployees), (err) => {
         if (err) throw err;
         console.log("complete");
     });
-
 };
 init();
 
