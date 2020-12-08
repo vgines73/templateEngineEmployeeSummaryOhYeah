@@ -5,7 +5,7 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
-const OUTPUT_DIR = path.resolve(__dirname, "../output");
+const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
@@ -128,7 +128,7 @@ function engineerQuestions() {
 
 //function to generate page
 function loadPage() {
-    fs.writeFile(outputPath, "main.html", render(allEmployees), (err) => {
+    fs.writeFile( outputPath, render(allEmployees), (err) => {
         if (err) throw err;
         console.log("complete");
     });
