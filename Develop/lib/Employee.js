@@ -24,8 +24,4 @@ class Employee {
     }
 };
 
-
-
-//functions getName(), getId(), getEmail(), getRole()
-
 module.exports = Employee;

@@ -5,14 +5,12 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
-const OUTPUT_DIR = path.resolve(__dirname, "output");
+const OUTPUT_DIR = path.resolve(__dirname, "../output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-const allEmployees = [];
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+const allEmployees = [];
 
 // to start asking the user questions for each employee
 function init() {
@@ -44,13 +42,13 @@ function init() {
             name: "officeNumber"
         },
     ]).then((res) => {
-        console.log("res:", res)
-        const manager = new Manager(res.name, res.id, res.email, res.officeNumber)
-        console.log("New employee:", manager)
-        allEmployees.push(manager)
+        console.log("res:", res);
+        const manager = new Manager(res.name, res.id, res.email, res.officeNumber);
+        console.log("New employee:", manager);
+        allEmployees.push(manager);
         internQuestions();
-    })
-}
+    });
+};
 
 // function for intern
 function internQuestions() {
@@ -82,13 +80,13 @@ function internQuestions() {
             name: "school"
         },
     ]).then((res) => {
-        console.log(res)
-        const intern = new Intern(res.name, res.id, res.email, res.school)
-        console.log(intern)
-        allEmployees.push(intern)
+        console.log(res);
+        const intern = new Intern(res.name, res.id, res.email, res.school);
+        console.log(intern);
+        allEmployees.push(intern);
         engineerQuestions();
-    })
-}
+    });
+};
 
 // function for engineer
 function engineerQuestions() {
@@ -120,22 +118,22 @@ function engineerQuestions() {
             name: "github"
         }
     ]).then((res) => {
-        console.log(res)
+        console.log(res);
         const engineer = new Engineer(res.name, res.id, res.email, res.github);
-        console.log(engineer)
-        allEmployees.push(engineer)
+        console.log(engineer);
+        allEmployees.push(engineer);
         loadPage();
-    })
-}
+    });
+};
 
 //function to generate page
 function loadPage() {
     fs.writeFile(outputPath, "main.html", render(allEmployees), (err) => {
         if (err) throw err;
-        console.log("complete")
-    })
+        console.log("complete");
+    });
 
-}
+};
 init();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
