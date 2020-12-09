@@ -44,7 +44,7 @@ function init() {
     ]).then((res) => {
         //console.log("res:", res);
         const manager = new Manager(res.name, res.id, res.email, res.officeNumber);
-        console.log("New employee:", manager);
+        //console.log("New employee:", manager);
         allEmployees.push(manager);
         internQuestions();
     });
@@ -82,7 +82,7 @@ function internQuestions() {
     ]).then((res) => {
         //console.log(res);
         const intern = new Intern(res.name, res.id, res.email, res.school);
-        console.log(intern);
+        //console.log(intern);
         allEmployees.push(intern);
         engineerQuestions();
     });
@@ -120,7 +120,7 @@ function engineerQuestions() {
     ]).then((res) => {
         //console.log(res);
         const engineer = new Engineer(res.name, res.id, res.email, res.github);
-        console.log(engineer);
+        //console.log(engineer);
         allEmployees.push(engineer);
         addEmployee();
     });
@@ -139,12 +139,72 @@ function addEmployee() {
         console.log(res)
 
         if (res.confirmEmployee === true) {
-            init();
+            whichEmployee();
         } else {
             loadPage();
         }
-    })
-}
+    });
+};
+
+function whichEmployee() {
+    inquirer.prompt([
+        {
+            type: "list",
+            message: "Which Employee would you like to add?",
+            choices: ["Intern", "Engineer"],
+            name: "whichEmployee"
+        }
+    ]).then((res) => {
+        console.log(res);
+
+        if (res.whichEmployee === "Intern") {
+            addIntern();
+        } else if (res.whichEmployee === "Engineer") {
+            engineerQuestions();
+        } else {
+            addEmployee();
+        }
+    });
+};
+
+// function to ask multiple intern questions
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is your Intern's name?",
+            name: "name"
+        },
+        {
+            type: "list",
+            message: "What is the employee's role?",
+            choices: ["Manager", "Intern", "Engineer"],
+            name: "role"
+        },
+        {
+            type: "input",
+            message: "What is your Intern's ID number?",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is your Intern's email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What school did your Intern graduate from?",
+            name: "school"
+        },
+    ]).then((res) => {
+        //console.log(res);
+        const intern = new Intern(res.name, res.id, res.email, res.school);
+        //console.log(intern);
+        allEmployees.push(intern);
+        addEmployee();
+    });
+};    
+
 //function to generate page
 function loadPage() {
     fs.writeFile(outputPath, render(allEmployees), (err) => {
