@@ -146,6 +146,7 @@ function addEmployee() {
     });
 };
 
+// function for which employee to choose to enter data
 function whichEmployee() {
     inquirer.prompt([
         {

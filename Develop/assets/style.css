@@ -1,3 +1,19 @@
-*{
+/* * {
     font-family: 'Special Elite', cursive;
+} */
+
+h1{
+    font-family: 'Special Elite', cursive;  
+}
+.name {
+    font-family: 'Special Elite', cursive;
+    font-size: 30px;
+}
+.job {
+    font-family: 'Special Elite', cursive;
+    font-size: 25px;
+}
+
+.team-area {
+    flex-wrap: wrap;
 }
