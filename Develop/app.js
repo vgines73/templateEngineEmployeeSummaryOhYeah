@@ -155,7 +155,7 @@ function whichEmployee() {
             name: "whichEmployee"
         }
     ]).then((res) => {
-        console.log(res);
+        //console.log(res);
 
         if (res.whichEmployee === "Intern") {
             addIntern();
@@ -213,4 +213,3 @@ function loadPage() {
     });
 };
 init();
-
